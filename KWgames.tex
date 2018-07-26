@@ -1,0 +1,54 @@
+\section{Communication complexity}
+
+\begin{definition}
+   KW games. In our games Alice always speaks first.
+\end{definition}
+
+
+\begin{definition}
+    The width of a $k$ round protocol is the length of the longest message.
+\end{definition}
+
+
+
+\begin{theorem}
+The length of the shortest protocol solving $KW_f$ is exactly equal to the depth of the smallest circuit computing $f$.
+\end{theorem}
+
+ 
+
+
+\begin{theorem}
+If $KW_f$ game can not be solved by a $k$ protocol of width $w$ then $f$ can not be solved by a circuit of size $2^w$.
+\end{theorem}
+
+We want to focus on KW games for compositions of functions: 
+
+\begin{definition}
+   
+   
+   Suppose $f$ and $g$ are a functions on $n$ and $m$ input respectively. Then $f \circ g$ is a function on $nm$ inputs:  
+   
+   \[(f \circ g)(x_{1,1}, \dots , x_{n,m}) = f( g(x_{1,1}, \dots x_{1,m}), \dots,  g(x_{n,1}, \dots x_{n,m}) )\]
+   
+   
+\end{definition}
+
+We present the following conjecture:
+
+\begin{conjecture}
+   Suppose that there is no $d_1$ round protocol for $KW_f$ of width $w_1$ and also that there is no $d_2$ round protocol for $KW_g$ (or for $KW_{\neg g}$ if $d_1$ is even) of width $w_2$. Then there is no $d_1+d_2-1$ round protocol of width $min(w_1,w_2)$.
+\end{conjecture}
+
+To complement it we can actually show a way to combine the protocols for $KW_f$ and $KW_g$:
+
+
+\begin{lemma}
+   Suppose that there is a $d_1$ round protocol for $KW_f$ of width $w_1$ and also that there is a $d_2$ round protocol for $KW_g$ (or for $KW_{\neg g}$ if $d_1$ is even)  of width $w_2$. Then there is a $d_1+d_2-1$ round protocol of width $max(w_1,w_2+log(n))$.
+\end{lemma}
+
+\begin{proof}
+    Execute promised protocol for $KW_f$. The last message can always assumed to be of length $\leq log(n)$, as the speaking player can just tell the coordinate where they differ. Then they can start executing the protocol for $KW_g$ or $KW_{\neg g}$ starting with the same player who was speaking last during the first protocol. The length of the first $d_1-1$ messages is at most $w_1$, length of $d_1$-th message is at most $w_2+log(n)$, and the length of thh last $d_2-1$ message is at most $w_2$. Which gives us the desired result.
+\end{proof}
+
+
