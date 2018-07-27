@@ -1,0 +1,24 @@
+\section{Reduction based approach}
+
+For simplicity let's focus on the function $OR_n \circ Parity_n$ and try to prove $\Omega(n)$ lower bound on width of $3$-round protocol. What we want is to do it in some kind of reduction-based style.
+
+We think of player's inputs as vectors with $n$ coordinates each coordinate has value $\in \{0,1\}^n$. We want to try to implement the following strategy:
+
+\begin{itemize}
+    \item Suppose we have a $3$ round protocol for $OR_n \circ Parity_n$ of width $w$.
+    
+    \item The first message by Alice partitions the matrix $a \times B$ into $\leq 2^w$ rectangles. Pick $R = A_1 \times B$ - the best (probably just the largest) one of them.
+    
+    \item
+    In $A_1$ an average coordinate has a high "diversity": 
+    
+    \[E_i[Pr_{x,y \in A_1}[x_i = x_j]] \approx 2^{-n + \frac{w}{n}} ] \]
+    
+    \item
+    We will fix few naughty coordinates of low density which hopefully will not decrease "diversity" of the rest of the coordinates by much.
+    \item
+    Now we want to say that the problem we end up with is hard by induction.
+    
+    
+    
+\end{itemize}
