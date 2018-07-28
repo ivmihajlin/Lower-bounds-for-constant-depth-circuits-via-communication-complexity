@@ -7,18 +7,43 @@ We think of player's inputs as vectors with $n$ coordinates each coordinate has 
 \begin{itemize}
     \item Suppose we have a $3$ round protocol for $OR_n \circ Parity_n$ of width $w$.
     
-    \item The first message by Alice partitions the matrix $a \times B$ into $\leq 2^w$ rectangles. Pick $R = A_1 \times B$ - the best (probably just the largest) one of them.
+    \item The first message by Alice partitions the matrix $A \times B$ into $\leq 2^w$ rectangles. Pick $R = A_1 \times B$ - the best (probably just the largest) one of them.
     
     \item
     In $A_1$ an average coordinate has a high "diversity": 
     
-    \[E_i[Pr_{x,y \in A_1}[x_i = x_j]] \approx 2^{-n + \frac{w}{n}} ] \]
+    \[E_i[Pr_{x,y \in A_1}[x_i = x_j]] \approx 2^{-n + \frac{w}{n}}  \]
     
     \item
     We will fix few naughty coordinates of low density which hopefully will not decrease "diversity" of the rest of the coordinates by much.
     \item
-    Now we want to say that the problem we end up with is hard by induction.
-    
-    
-    
+    Now we want to say that the problem we end up with is hard.
 \end{itemize}
+
+To prove this we need to prove two lemmas. First tells us that after Alice's message we can pick a good subset of coordinates. This should be related to \cite{meir2017prediction}.
+
+\begin{lemma}
+    Suppose we have a set $S \subset A^k$, such that $|S| = \frac{|A|^k}{r}$. Then there is a subset of coordinates $I$ and values $a_i \in A$ for each $i \in I$, such that:
+    
+    \[ \forall j \not\in I:~  |\{r \in A| \exists x \in A:~  x_j = r, ~ \forall i \in I: ~ x_i = a_i\}| \gtrsim \frac{|A|}{r^{\frac{1}{k}}}  \]
+    
+\end{lemma}
+
+
+The second lemma states that Parity is hard even if we have several instances to choose from:
+
+\begin{lemma}
+    For every set $S \subset Parity^{-1}(0)^k$, such that $\forall i \in [k]: |A_i| \geq \frac{2^{n-1}}{p}$ the following game is hard:
+    
+    \begin{itemize}
+        \item Alice gets $a \in S$.
+        
+        \item Bob gets $b \in Parity^{-1}(1)^k$.
+        
+        \item Bob is allowed to send one message to Alice.
+        
+        \item Alice should output $i,j$ such that $a_{i,j} \neq b_{i,j}$
+    \end{itemize}
+    
+    
+\end{lemma}
