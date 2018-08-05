@@ -1,34 +1,5 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage{amsthm}
-\usepackage{amsmath} 
-\usepackage{natbib}
-\usepackage{graphicx}
-\usepackage{enumerate}
-\usepackage{complexity}
-\usepackage{amssymb}
-\usepackage{amsfonts}
+\input{input/defs.tex}
 
-\makeatletter
-\newtheorem*{rep@theorem}{\rep@title}
-\newcommand{\newreptheorem}[2]{%
-\newenvironment{rep#1}[1]{%
- \def\rep@title{#2 \ref{##1}}%
- \begin{rep@theorem}}%
- {\end{rep@theorem}}}
-\makeatother
-
-
-\newtheorem{conjecture}{Conjecture}
-\newreptheorem{conjecture}{Conjecture}
-\newtheorem*{conjecture*}{Conjecture}
-\newtheorem{theorem}{Theorem}
-\newreptheorem{theorem}{Theorem}
-\newtheorem*{theorem*}{Theorem}
-\newtheorem{lemma}{Lemma}
-\newreptheorem{lemma}{Lemma}
-\newtheorem{definition}{Definition}
-\newtheorem{open_problem}{Open problem}
 
 \title{Lower bounds for constant depth circuits via communication complexity}
 \author{}
@@ -38,11 +9,11 @@
 
 \maketitle
 
-\input{introduction}
+\input{parts/introduction.tex}
 
-\input{KWgames}
+\input{parts/KWgames.tex}
 
-\input{Reduction_based_approach}
+\input{parts/Reduction_based_approach.tex}
 
 
 \bibliography{bibl}{}
